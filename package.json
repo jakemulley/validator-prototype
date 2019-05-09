@@ -2,9 +2,10 @@
   "name": "registers-collector",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,5 +15,8 @@
     "express": "^4.16.4",
     "multer": "^1.4.1",
     "pug": "^2.0.3"
+  },
+  "engines": {
+    "node": "10.x"
   }
 }

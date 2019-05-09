@@ -9,4 +9,4 @@ app.set('view engine', 'pug');
 app.get('/', index_controller.index);
 app.post('/', upload.single('csv_file'), index_controller.validate);
 
-app.listen(3000, () => console.log('App running on :3000'));
+app.listen(process.env.PORT || 5000, () => console.log('App running on :3000'));
