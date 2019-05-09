@@ -2,15 +2,16 @@ h1 Validate against JSON Schema (prototype)
 h2 Upload/input a CSV file
 form(action="", method="post", enctype="multipart/form-data")
   input(type="file", name="csv_file")
+  p or select a file:
   p
-    label valid
-    input(type='radio', name='type', value='valid')
+    label(for='valid') valid csv
+    input(type='radio', name='type', value='valid', id='valid')
   p
-    label invalid
-    input(type='radio', name='type', value='invalid')
+    label(for='invalid') invalid csv
+    input(type='radio', name='type', value='invalid', id='invalid')
   p
-    label malformed
-    input(type='radio', name='type', value='malformed')
+    label(for='malformed') malformed csv
+    input(type='radio', name='type', value='malformed', id='malformed')
   button(type='submit') Validate
 
 h2 Schema definition
