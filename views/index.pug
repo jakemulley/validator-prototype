@@ -3,3 +3,10 @@ h2 Upload/input a CSV file
 form(action="", method="post", enctype="multipart/form-data")
 	input(type="file", name="csv_file")
 	button(type='submit') Validate my file
+
+h2 Schema definition
+p Prepared with the
+	= ' '
+	a(href='https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/653657/BrownfieldLandRegisters_-_DataStandard.pdf') Brownfield Land Registers Data Standard
+
+pre(style='border:1px solid #ddd;padding:10px') #{schema}
