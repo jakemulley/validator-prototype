@@ -13,20 +13,37 @@ const controller = {
     return res.render('index', { schema: JSON.stringify(require('./../schema.json'), null, 2) })
   },
   validate (req, res) {
-    csvtojson().fromFile(req.file.path).then(jsonObj => {
-      const results = jsonObj.filter(item => Object.values(item).some(result => result.length)).map(item => {
-        let valid = validate(item)
-        item.errors = []
+    if (typeof req.body.type === 'string') {
+      csvtojson().fromFile('./csvs/' + req.body.type + '.csv').then(jsonObj => {
+        const results = jsonObj.filter(item => Object.values(item).some(result => result.length)).map(item => {
+          let valid = validate(item)
+          item.errors = []
 
-        if (!valid) {
-          item.errors = validate.errors
-        }
+          if (!valid) {
+            item.errors = validate.errors
+          }
 
-        return item
+          return item
+        })
+
+        return res.render('validate', { results })
       })
+    } else {
+      csvtojson().fromFile(req.file.path).then(jsonObj => {
+        const results = jsonObj.filter(item => Object.values(item).some(result => result.length)).map(item => {
+          let valid = validate(item)
+          item.errors = []
 
-      return res.render('validate', { results })
-    })
+          if (!valid) {
+            item.errors = validate.errors
+          }
+
+          return item
+        })
+
+        return res.render('validate', { results })
+      })
+    }
   }
 }
 
