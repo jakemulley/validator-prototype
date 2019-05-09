@@ -1,0 +1,20 @@
+h1 Results
+
+table
+	thead
+		tr
+			each key in Object.keys(results[0])
+				th=key
+	tbody
+		each row in results
+			tr
+				each key in Object.keys(results[0])
+					td
+						if key == 'errors'
+							ul
+								each error in row[key]
+									li
+										p= error.dataPath + ' ' + error.message
+
+						else
+							=row[key]
